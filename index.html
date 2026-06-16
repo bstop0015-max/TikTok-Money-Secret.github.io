@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Как зарабатывать в TikTok | Тренды монетизации</title>
+    <style>
+        /* Общие стили и переменные (Стиль TikTok) */
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --tiktok-pink: #FE2C55;
+            --tiktok-cyan: #25F4EE;
+            --text-color: #ffffff;
+            --text-muted: #a0a0a0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        /* Главный экран (Hero Section) */
+        header {
+            text-align: center;
+            padding: 100px 20px 80px 20px;
+            position: relative;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, var(--tiktok-pink), var(--tiktok-cyan));
+            filter: blur(150px);
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        h1 span {
+            background: linear-gradient(to right, var(--tiktok-cyan), var(--tiktok-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--tiktok-pink);
+            color: white;
+            text-decoration: none;
+            padding: 15px 35px;
+            font-weight: 600;
+            border-radius: 50px;
+            box-shadow: 0 0 20px rgba(254, 44, 85, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(254, 44, 85, 0.7);
+            background: linear-gradient(45deg, var(--tiktok-pink), #e02247);
+        }
+
+        /* Разделы */
+        section {
+            margin-bottom: 80px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--tiktok-cyan);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Сетка карточек */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(37, 244, 238, 0.4);
+            box-shadow: 0 10px 30px rgba(37, 244, 238, 0.05);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* Блок с фишками алгоритмов */
+        .tips-box {
+            background: linear-gradient(135deg, #1e1e1e 0%, #151515 100%);
+            border-left: 5px solid var(--tiktok-pink);
+            padding: 40px;
+            border-radius: 0 20px 20px 0;
+        }
+
+        .tips-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .tips-list li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 30px;
+            font-size: 1.1rem;
+        }
+
+        .tips-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--tiktok-cyan);
+            font-size: 1.2rem;
+        }
+
+        /* Подвал сайта (Footer) */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--tiktok-cyan);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Адаптивность для мобильных устройств */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.6rem; }
+            .container { padding: 20px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Главный экран -->
+    <header>
+        <div class="container">
+            <h1>Из нуля в ТОП: Как зарабатывать в <span>TikTok</span></h1>
+            <p class="subtitle">Пошаговое руководство по монетизации контента, фишкам алгоритмов и секретам успешного старта для начинающих блогеров.</p>
+            <a href="#methods" class="btn">Узнать способы заработка</a>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- Блок "Кому это подойдет" -->
+        <section>
+            <h2>Кому это подойдет?</h2>
+            <div class="grid">
+                <div class="card">
+                    <span class="card-icon">🔥</span>
+                    <h3>Новичкам</h3>
+                    <p>Если у тебя сейчас 0 подписчиков, но есть огромное желание снимать видео и развивать свой личный бренд.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">⚡</span>
+                    <h3>Блогерам</h3>
+                    <p>Если у тебя уже есть первые просмотры и аудитория, но ты до сих пор не знаешь, как превратить их в реальный доход.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">💎</span>
+                    <h3>Экспертам</h3>
+                    <p>Для тех, кто хочет продавать свои услуги, гайды, консультации или товары через креативный короткий формат.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок "Способы заработка" -->
+        <section id="methods">
+            <h2>Главные способы монетизации</h2>
+            <div class="grid">
+                <div class="card">
+                    <span class="card-icon">💵</span>
+                    <h3>Прямые эфиры и подарки</h3>
+                    <p>Проводи стримы, общайся с аудиторией в реальном времени и получай виртуальные подарки от зрителей, которые легко выводятся на карту.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🤝</span>
+                    <h3>Реклама и интеграции</h3>
+                    <p>Бренды и музыкальные исполнители готовы платить за продвижение своих треков или продуктов в твоих креативных видеороликах.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">📈</span>
+                    <h3>Партнерские программы</h3>
+                    <p>Рекомендуй полезные сервисы или товары в своих видео и получай процент с каждой продажи по твоей индивидуальной ссылке.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок "Секреты успеха" -->
+        <section>
+            <div class="tips-box">
+                <h3>💡 Секреты удержания внимания и алгоритмов</h3>
+                <p style="color: var(--text-muted); margin-top: 10px;">Чтобы просмотры росли, а способы заработка приносили больше денег, помни про три главных правила:</p>
+                <ul class="tips-list">
+                    <li><strong>Правило 3-х секунд:</strong> Твое видео должно зацепить зрителя с самого начала, иначе он просто пролистнет его дальше.</li>
+                    <li><strong>Регулярность контента:</strong> Алгоритмы TikTok продвигают тех авторов, которые стабильно выкладывают ролики каждый день.</li>
+                    <li><strong>Тренды и музыка:</strong> Всегда используй популярные звуки и адаптируй мировые тренды под свою тематику.</li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <p>Сделано с любовью для твоих будущих миллионов 🚀</p>
+            <p style="margin-top: 10px;">&copy; 2026 Твой Сайт про TikTok. Все права защищены.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
