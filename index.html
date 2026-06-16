@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Как зарабатывать в TikTok | Тренды монетизации</title>
     <style>
-        /* Общие стили и переменные (Стиль TikTok) */
+        /* Переменные стиля (TikTok + Cyberpunk) */
         :root {
             --bg-color: #121212;
             --card-bg: #1e1e1e;
@@ -13,6 +13,7 @@
             --tiktok-cyan: #25F4EE;
             --text-color: #ffffff;
             --text-muted: #a0a0a0;
+            --admin-green: #00ff66;
         }
 
         * {
@@ -87,6 +88,8 @@
             border-radius: 50px;
             box-shadow: 0 0 20px rgba(254, 44, 85, 0.4);
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
 
         .btn:hover {
@@ -185,7 +188,6 @@
             font-size: 1.2rem;
         }
 
-        /* Подвал сайта (Footer) */
         footer {
             text-align: center;
             padding: 60px 20px;
@@ -194,17 +196,107 @@
             font-size: 0.9rem;
         }
 
-        footer a {
-            color: var(--tiktok-cyan);
-            text-decoration: none;
-            font-weight: 600;
+        /* 🔐 Модальное окно авторизации админа */
+        .admin-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
         }
 
-        footer a:hover {
-            text-decoration: underline;
+        .login-box {
+            background: #1a1a1a;
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid var(--tiktok-pink);
+            text-align: center;
+            box-shadow: 0 0 30px rgba(254, 44, 85, 0.3);
+            max-width: 400px;
+            width: 90%;
         }
 
-        /* Адаптивность для мобильных устройств */
+        .login-box h3 { margin-bottom: 20px; font-size: 1.5rem; letter-spacing: 1px; }
+
+        .login-box input {
+            width: 100%;
+            padding: 12px 20px;
+            background: #121212;
+            border: 1px solid #333;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 20px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .login-box input:focus { border-color: var(--tiktok-cyan); box-shadow: 0 0 10px rgba(37, 244, 238, 0.5); }
+
+        /* 🛠 ПАНЕЛЬ АДМИНИСТРАТОРА (Изначально скрыта) */
+        #admin-panel {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .admin-header {
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .status-badge {
+            background: rgba(0, 255, 102, 0.1);
+            color: var(--admin-green);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            border: 1px solid var(--admin-green);
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .stat-card {
+            background: #161616;
+            border: 1px solid #252525;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stat-card h4 { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px; text-transform: uppercase;}
+        .stat-card .value { font-size: 2.2rem; font-weight: 800; color: var(--tiktok-cyan); }
+
+        .console-box {
+            background: #090909;
+            border: 1px solid #222;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            border-radius: 10px;
+            color: var(--admin-green);
+            height: 200px;
+            overflow-y: auto;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+
+        /* Секретная кнопка */
+        .secret-trigger {
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        .secret-trigger:hover { opacity: 0.7; }
+
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
             h2 { font-size: 1.6rem; }
@@ -214,83 +306,176 @@
 </head>
 <body>
 
-    <!-- Главный экран -->
-    <header>
+    <div id="main-site">
+        <header>
+            <div class="container">
+                <h1>Из нуля в ТОП: Как зарабатывать в <span>TikTok</span></h1>
+                <p class="subtitle">Пошаговое руководство по монетизации контента, фишкам алгоритмов и секретам успешного старта для начинающих блогеров.</p>
+                <a href="#methods" class="btn">Узнать способы заработка</a>
+            </div>
+        </header>
+
         <div class="container">
-            <h1>Из нуля в ТОП: Как зарабатывать в <span>TikTok</span></h1>
-            <p class="subtitle">Пошаговое руководство по монетизации контента, фишкам алгоритмов и секретам успешного старта для начинающих блогеров.</p>
-            <a href="#methods" class="btn">Узнать способы заработка</a>
+            <section>
+                <h2>Кому это подойдет?</h2>
+                <div class="grid">
+                    <div class="card">
+                        <span class="card-icon">🔥</span>
+                        <h3>Новичкам</h3>
+                        <p>Если у тебя сейчас 0 подписчиков, но есть огромное желание снимать видео и развивать свой личный бренд.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">⚡</span>
+                        <h3>Блогерам</h3>
+                        <p>Если у тебя уже есть первые просмотры и аудитория, но ты до сих пор не знаешь, как превратить их в реальный доход.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">💎</span>
+                        <h3>Экспертам</h3>
+                        <p>Для тех, кто хочет продавать свои услуги, гайды, консультации или товары через креативный короткий формат.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="methods">
+                <h2>Главные способы монетизации</h2>
+                <div class="grid">
+                    <div class="card">
+                        <span class="card-icon">💵</span>
+                        <h3>Прямые эфиры и подарки</h3>
+                        <p>Проводи стримы, общайся с аудиторией в реальном времени и получай виртуальные подарки от зрителей, которые легко выводятся на карту.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">🤝</span>
+                        <h3>Реклама и интеграции</h3>
+                        <p>Бренды и музыкальные исполнители готовы платить за продвижение своих треков или продуктов в твоих креативных видеороликах.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">📈</span>
+                        <h3>Партнерские программы</h3>
+                        <p>Рекомендуй полезные сервисы или товары в своих видео и получай процент с каждой продажи по твоей индивидуальной ссылке.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="tips-box">
+                    <h3>💡 Секреты удержания внимания и алгоритмов</h3>
+                    <p style="color: var(--text-muted); margin-top: 10px;">Чтобы просмотры росли, а способы заработка приносили больше денег, помни про три главных правила:</p>
+                    <ul class="tips-list">
+                        <li><strong>Правило 3-х секунд:</strong> Твое видео должно зацепить зрителя с самого начала, иначе он просто пролистнет его дальше.</li>
+                        <li><strong>Регулярность контента:</strong> Алгоритмы TikTok продвигают тех авторов, которые стабильно выкладывают ролики каждый день.</li>
+                        <li><strong>Тренды и музыка:</strong> Всегда используй популярные звуки и адаптируй мировые тренды под свою тематику.</li>
+                    </ul>
+                </div>
+            </section>
         </div>
-    </header>
 
-    <div class="container">
-        
-        <!-- Блок "Кому это подойдет" -->
-        <section>
-            <h2>Кому это подойдет?</h2>
-            <div class="grid">
-                <div class="card">
-                    <span class="card-icon">🔥</span>
-                    <h3>Новичкам</h3>
-                    <p>Если у тебя сейчас 0 подписчиков, но есть огромное желание снимать видео и развивать свой личный бренд.</p>
-                </div>
-                <div class="card">
-                    <span class="card-icon">⚡</span>
-                    <h3>Блогерам</h3>
-                    <p>Если у тебя уже есть первые просмотры и аудитория, но ты до сих пор не знаешь, как превратить их в реальный доход.</p>
-                </div>
-                <div class="card">
-                    <span class="card-icon">💎</span>
-                    <h3>Экспертам</h3>
-                    <p>Для тех, кто хочет продавать свои услуги, гайды, консультации или товары через креативный короткий формат.</p>
-                </div>
+        <footer>
+            <div class="container">
+                <p>Сделано с любовью для твоих будущих миллионов <span class="secret-trigger" onclick="openAdminModal()">🚀</span></p>
+                <p style="margin-top: 10px;">&copy; 2026 Твой Сайт про TikTok. Все права защищены.</p>
             </div>
-        </section>
-
-        <!-- Блок "Способы заработка" -->
-        <section id="methods">
-            <h2>Главные способы монетизации</h2>
-            <div class="grid">
-                <div class="card">
-                    <span class="card-icon">💵</span>
-                    <h3>Прямые эфиры и подарки</h3>
-                    <p>Проводи стримы, общайся с аудиторией в реальном времени и получай виртуальные подарки от зрителей, которые легко выводятся на карту.</p>
-                </div>
-                <div class="card">
-                    <span class="card-icon">🤝</span>
-                    <h3>Реклама и интеграции</h3>
-                    <p>Бренды и музыкальные исполнители готовы платить за продвижение своих треков или продуктов в твоих креативных видеороликах.</p>
-                </div>
-                <div class="card">
-                    <span class="card-icon">📈</span>
-                    <h3>Партнерские программы</h3>
-                    <p>Рекомендуй полезные сервисы или товары в своих видео и получай процент с каждой продажи по твоей индивидуальной ссылке.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Блок "Секреты успеха" -->
-        <section>
-            <div class="tips-box">
-                <h3>💡 Секреты удержания внимания и алгоритмов</h3>
-                <p style="color: var(--text-muted); margin-top: 10px;">Чтобы просмотры росли, а способы заработка приносили больше денег, помни про три главных правила:</p>
-                <ul class="tips-list">
-                    <li><strong>Правило 3-х секунд:</strong> Твое видео должно зацепить зрителя с самого начала, иначе он просто пролистнет его дальше.</li>
-                    <li><strong>Регулярность контента:</strong> Алгоритмы TikTok продвигают тех авторов, которые стабильно выкладывают ролики каждый день.</li>
-                    <li><strong>Тренды и музыка:</strong> Всегда используй популярные звуки и адаптируй мировые тренды под свою тематику.</li>
-                </ul>
-            </div>
-        </section>
-
+        </footer>
     </div>
 
-    <!-- Подвал -->
-    <footer>
-        <div class="container">
-            <p>Сделано с любовью для твоих будущих миллионов 🚀</p>
-            <p style="margin-top: 10px;">&copy; 2026 Твой Сайт про TikTok. Все права защищены.</p>
-        </div>
-    </footer>
 
+    <div class="admin-modal" id="authModal" onclick="closeAdminModal(event)">
+        <div class="login-box" onclick="event.stopPropagation()">
+            <h3>ВХОД В СИСТЕМУ</h3>
+            <input type="password" id="adminCode" placeholder="Введите секретный код" maxlength="15">
+            <button class="btn" onclick="checkAdminCode()">ПОДТВЕРДИТЬ</button>
+        </div>
+    </div>
+
+
+    <div id="admin-panel">
+        <div class="container">
+            <div class="admin-header">
+                <h2>Tiktok-Secret // ROOT_PANEL</h2>
+                <div class="status-badge">Система Активна</div>
+            </div>
+
+            <div class="grid" style="margin-bottom: 40px;">
+                <div class="stat-card">
+                    <h4>Серверный Статус</h4>
+                    <div class="value" style="color: var(--admin-green);">ONLINE</div>
+                </div>
+                <div class="stat-card">
+                    <h4>Запущено процессов</h4>
+                    <div class="value">14 / 14</div>
+                </div>
+                <div class="stat-card">
+                    <h4>Общий Трафик Сайта</h4>
+                    <div class="value">1,337 K/s</div>
+                </div>
+            </div>
+
+            <h3>Логи Терминала и Системы</h3>
+            <div class="console-box" id="consoleLog">
+                [SYSTEM] Инициализация админ-панели...<br>
+                [SYSTEM] Доступ получен. Авторизация успешна.<br>
+                [CORE] Подключение к TikTok LIVE Studio API... Успешно.<br>
+                [CORE] Скрипты обхода алгоритмов загружены на 100%.<br>
+                [STATUS] Ожидание команд оператора...
+            </div>
+            
+            <button class="btn" style="margin-top: 30px; background: #333; box-shadow: none;" onclick="logoutAdmin()">Выйти из панели</button>
+        </div>
+    </div>
+
+    <script>
+        const SECRET_CODE = "67098978";
+
+        // Открыть окно ввода кода
+        function openAdminModal() {
+            document.getElementById('authModal').style.display = 'flex';
+            document.getElementById('adminCode').focus();
+        }
+
+        // Закрыть окно ввода
+        function closeAdminModal(e) {
+            document.getElementById('authModal').style.display = 'none';
+        }
+
+        // Проверка кода
+        function checkAdminCode() {
+            const inputCode = document.getElementById('adminCode').value;
+            if (inputCode === SECRET_CODE) {
+                // Скрываем сайт и окно ввода
+                document.getElementById('main-site').style.display = 'none';
+                document.getElementById('authModal').style.display = 'none';
+                
+                // Включаем админку
+                document.getElementById('admin-panel').style.display = 'block';
+                
+                // Эффект печатающейся консоли
+                addConsoleMessage();
+            } else {
+                // Если код неверный — просто закроем окно, как будто ничего и не было
+                document.getElementById('adminCode').value = '';
+                document.getElementById('authModal').style.display = 'none';
+            }
+        }
+
+        // Логгер для красоты
+        function addConsoleMessage() {
+            const consoleBox = document.getElementById('consoleLog');
+            setTimeout(() => {
+                consoleBox.innerHTML += "<br>[OK] Синхронизация потоков завершена.";
+            }, 1000);
+            setTimeout(() => {
+                consoleBox.innerHTML += "<br>[INFO] Все системы работают в штатном режиме. Контроль передан пользователю.";
+                consoleBox.scrollTop = consoleBox.scrollHeight;
+            }, 2000);
+        }
+
+        // Выход из админки обратно на сайт
+        function logoutAdmin() {
+            document.getElementById('adminCode').value = '';
+            document.getElementById('admin-panel').style.display = 'none';
+            document.getElementById('main-site').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
